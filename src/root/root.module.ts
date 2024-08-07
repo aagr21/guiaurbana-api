@@ -8,10 +8,10 @@ import {
   LineNameEntity,
   LineRouteEntity,
   ParkingEntity,
+  SpeedReducerEntity,
 } from '@root/models/entities';
 import { ParkingsService, RootService } from '@root/services';
 import { ParkingsGateway } from '@root/gateways/parkings.gateway';
-import { SpeedReducerEntity } from './models/entities/speed-reducer.entity';
 
 @Module({
   imports: [

@@ -6,8 +6,8 @@ import {
   CityCameraEntity,
   LineNameEntity,
   LineRouteEntity,
+  SpeedReducerEntity,
 } from '@root/models/entities';
-import { SpeedReducerEntity } from '@root/models/entities/speed-reducer.entity';
 import { AllResponse } from '@root/models/responses/all-response';
 import { Repository } from 'typeorm';
 

@@ -3,4 +3,5 @@ export { CityCameraEntity } from './city-camera.entity';
 export { LineNameEntity } from './line-name.entity';
 export { LineRouteEntity } from './line-route.entity';
 export { ParkingEntity } from './parking.entity';
+export { SpeedReducerEntity } from './speed-reducer.entity';
 export { ChannelRouteEntity } from './channel-route.entity';
