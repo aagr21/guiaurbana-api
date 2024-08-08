@@ -9,6 +9,7 @@ import {
   LineRouteEntity,
   ParkingEntity,
   SpeedReducerEntity,
+  SpeedReducerGroupEntity,
 } from '@root/models/entities';
 import { ParkingsService, RootService } from '@root/services';
 import { ParkingsGateway } from '@root/gateways/parkings.gateway';
@@ -22,6 +23,7 @@ import { ParkingsGateway } from '@root/gateways/parkings.gateway';
       LineRouteEntity,
       ChannelRouteEntity,
       SpeedReducerEntity,
+      SpeedReducerGroupEntity,
       ParkingEntity,
     ]),
   ],

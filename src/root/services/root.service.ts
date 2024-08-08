@@ -6,7 +6,7 @@ import {
   CityCameraEntity,
   LineNameEntity,
   LineRouteEntity,
-  SpeedReducerEntity,
+  SpeedReducerGroupEntity,
 } from '@root/models/entities';
 import { AllResponse } from '@root/models/responses/all-response';
 import { Repository } from 'typeorm';
@@ -24,8 +24,8 @@ export class RootService {
     private readonly linesRoutesRepository: Repository<LineRouteEntity>,
     @InjectRepository(ChannelRouteEntity)
     private readonly channelsRoutesRepository: Repository<ChannelRouteEntity>,
-    @InjectRepository(SpeedReducerEntity)
-    private readonly speedReducersRepository: Repository<SpeedReducerEntity>,
+    @InjectRepository(SpeedReducerGroupEntity)
+    private readonly speedReducersGroupsRepository: Repository<SpeedReducerGroupEntity>,
   ) {}
 
   async findAll(): Promise<AllResponse> {
@@ -59,9 +59,12 @@ export class RootService {
       },
     });
 
-    const speedReducers = await this.speedReducersRepository.find({
+    const speedReducersGroups = await this.speedReducersGroupsRepository.find({
       order: {
         id: 'ASC',
+      },
+      relations: {
+        speedReducers: true,
       },
     });
 
@@ -71,7 +74,7 @@ export class RootService {
       linesNames,
       linesRoutes,
       channelsRoutes,
-      speedReducers,
+      speedReducersGroups,
     };
   }
 }

@@ -1,5 +1,12 @@
 import { Point } from 'geojson';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { SpeedReducerGroupEntity } from './speed-reducer-group.entity';
 
 @Entity({
   name: 'speed_reducers',
@@ -29,4 +36,13 @@ export class SpeedReducerEntity {
     name: 'year',
   })
   year?: string;
+
+  @ManyToOne(
+    () => SpeedReducerGroupEntity,
+    (speedReducerGroupEntity) => speedReducerGroupEntity.speedReducers,
+  )
+  @JoinColumn({
+    name: 'speed_reducer_group_id',
+  })
+  speedReducerGroup: SpeedReducerGroupEntity;
 }

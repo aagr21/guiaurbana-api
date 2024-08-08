@@ -4,8 +4,8 @@ import {
   CityCameraEntity,
   LineNameEntity,
   LineRouteEntity,
+  SpeedReducerGroupEntity,
 } from '@root/models/entities';
-import { SpeedReducerEntity } from '../entities/speed-reducer.entity';
 
 export interface AllResponse {
   busStops: BusStopEntity[];
@@ -13,5 +13,5 @@ export interface AllResponse {
   linesNames: LineNameEntity[];
   linesRoutes: LineRouteEntity[];
   channelsRoutes: ChannelRouteEntity[];
-  speedReducers: SpeedReducerEntity[];
+  speedReducersGroups: SpeedReducerGroupEntity[];
 }
