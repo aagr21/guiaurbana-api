@@ -5,7 +5,9 @@ import { Point } from 'geojson';
   name: 'bus_stops',
 })
 export class BusStopEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    name: 'id',
+  })
   id?: number;
 
   @Column({

@@ -7,6 +7,7 @@ import {
   LineNameEntity,
   LineRouteEntity,
   SpeedReducerGroupEntity,
+  TrafficLightGroupEntity,
 } from '@root/models/entities';
 import { AllResponse } from '@root/models/responses/all-response';
 import { Repository } from 'typeorm';
@@ -26,6 +27,8 @@ export class RootService {
     private readonly channelsRoutesRepository: Repository<ChannelRouteEntity>,
     @InjectRepository(SpeedReducerGroupEntity)
     private readonly speedReducersGroupsRepository: Repository<SpeedReducerGroupEntity>,
+    @InjectRepository(TrafficLightGroupEntity)
+    private readonly trafficLightsGroupsRepository: Repository<TrafficLightGroupEntity>,
   ) {}
 
   async findAll(): Promise<AllResponse> {
@@ -68,6 +71,12 @@ export class RootService {
       },
     });
 
+    const trafficLightsGroups = await this.trafficLightsGroupsRepository.find({
+      relations: {
+        trafficLights: true,
+      },
+    });
+
     return {
       busStops,
       cityCameras,
@@ -75,6 +84,7 @@ export class RootService {
       linesRoutes,
       channelsRoutes,
       speedReducersGroups,
+      trafficLightsGroups,
     };
   }
 }

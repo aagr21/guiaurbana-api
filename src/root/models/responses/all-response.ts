@@ -5,6 +5,7 @@ import {
   LineNameEntity,
   LineRouteEntity,
   SpeedReducerGroupEntity,
+  TrafficLightGroupEntity,
 } from '@root/models/entities';
 
 export interface AllResponse {
@@ -14,4 +15,5 @@ export interface AllResponse {
   linesRoutes: LineRouteEntity[];
   channelsRoutes: ChannelRouteEntity[];
   speedReducersGroups: SpeedReducerGroupEntity[];
+  trafficLightsGroups: TrafficLightGroupEntity[];
 }

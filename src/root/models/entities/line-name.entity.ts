@@ -4,7 +4,9 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
   name: 'lines_names',
 })
 export class LineNameEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    name: 'id',
+  })
   id?: number;
 
   @Column({

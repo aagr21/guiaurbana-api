@@ -5,7 +5,9 @@ import { LineString } from "geojson";
   name: "lines_routes"
 })
 export class LineRouteEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    name: 'id',
+  })
   id: number;
 
   @Column({

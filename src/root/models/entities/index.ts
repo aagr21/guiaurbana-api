@@ -6,3 +6,5 @@ export { ParkingEntity } from './parking.entity';
 export { SpeedReducerEntity } from './speed-reducer.entity';
 export { SpeedReducerGroupEntity } from './speed-reducer-group.entity';
 export { ChannelRouteEntity } from './channel-route.entity';
+export { TrafficLightEntity } from './traffic-light.entity';
+export { TrafficLightGroupEntity } from './traffic-light-group.entity';

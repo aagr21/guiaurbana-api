@@ -5,7 +5,9 @@ import { Point } from 'geojson';
   name: 'city_cameras',
 })
 export class CityCameraEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({
+    name: 'id',
+  })
   id?: number;
 
   @Column({
