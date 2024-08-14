@@ -2,6 +2,7 @@ import {
   BusStopEntity,
   ChannelRouteEntity,
   CityCameraEntity,
+  EducationCenterGroupEntity,
   LineNameEntity,
   LineRouteEntity,
   SpeedReducerGroupEntity,
@@ -16,4 +17,5 @@ export interface AllResponse {
   channelsRoutes: ChannelRouteEntity[];
   speedReducersGroups: SpeedReducerGroupEntity[];
   trafficLightsGroups: TrafficLightGroupEntity[];
+  educationCentersGroups: EducationCenterGroupEntity[];
 }

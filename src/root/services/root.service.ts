@@ -4,6 +4,7 @@ import {
   BusStopEntity,
   ChannelRouteEntity,
   CityCameraEntity,
+  EducationCenterGroupEntity,
   LineNameEntity,
   LineRouteEntity,
   SpeedReducerGroupEntity,
@@ -29,6 +30,8 @@ export class RootService {
     private readonly speedReducersGroupsRepository: Repository<SpeedReducerGroupEntity>,
     @InjectRepository(TrafficLightGroupEntity)
     private readonly trafficLightsGroupsRepository: Repository<TrafficLightGroupEntity>,
+    @InjectRepository(EducationCenterGroupEntity)
+    private readonly educationCentersGroupsRepository: Repository<EducationCenterGroupEntity>,
   ) {}
 
   async findAll(): Promise<AllResponse> {
@@ -77,6 +80,13 @@ export class RootService {
       },
     });
 
+    const educationCentersGroups =
+      await this.educationCentersGroupsRepository.find({
+        relations: {
+          educationCenters: true,
+        },
+      });
+
     return {
       busStops,
       cityCameras,
@@ -85,6 +95,7 @@ export class RootService {
       channelsRoutes,
       speedReducersGroups,
       trafficLightsGroups,
+      educationCentersGroups,
     };
   }
 }
