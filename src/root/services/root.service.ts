@@ -6,7 +6,7 @@ import {
   CityCameraEntity,
   EducationCenterGroupEntity,
   LineNameEntity,
-  LineRouteEntity,
+  ParkingEntity,
   SpeedReducerGroupEntity,
   TrafficLightGroupEntity,
 } from '@root/models/entities';
@@ -22,8 +22,6 @@ export class RootService {
     private readonly cityCamerasRepository: Repository<CityCameraEntity>,
     @InjectRepository(LineNameEntity)
     private readonly linesNamesRepository: Repository<LineNameEntity>,
-    @InjectRepository(LineRouteEntity)
-    private readonly linesRoutesRepository: Repository<LineRouteEntity>,
     @InjectRepository(ChannelRouteEntity)
     private readonly channelsRoutesRepository: Repository<ChannelRouteEntity>,
     @InjectRepository(SpeedReducerGroupEntity)
@@ -32,6 +30,8 @@ export class RootService {
     private readonly trafficLightsGroupsRepository: Repository<TrafficLightGroupEntity>,
     @InjectRepository(EducationCenterGroupEntity)
     private readonly educationCentersGroupsRepository: Repository<EducationCenterGroupEntity>,
+    @InjectRepository(ParkingEntity)
+    private readonly parkingsRepository: Repository<ParkingEntity>,
   ) {}
 
   async findAll(): Promise<AllResponse> {
@@ -53,12 +53,6 @@ export class RootService {
       },
     });
 
-    const linesRoutes = await this.linesRoutesRepository.find({
-      order: {
-        id: 'ASC',
-      },
-    });
-
     const channelsRoutes = await this.channelsRoutesRepository.find({
       order: {
         id: 'ASC',
@@ -75,6 +69,9 @@ export class RootService {
     });
 
     const trafficLightsGroups = await this.trafficLightsGroupsRepository.find({
+      order: {
+        id: 'ASC',
+      },
       relations: {
         trafficLights: true,
       },
@@ -82,20 +79,29 @@ export class RootService {
 
     const educationCentersGroups =
       await this.educationCentersGroupsRepository.find({
+        order: {
+          id: 'ASC',
+        },
         relations: {
           educationCenters: true,
         },
       });
 
+    const parkings = await this.parkingsRepository.find({
+      order: {
+        id: 'ASC'
+      },
+    });
+
     return {
       busStops,
       cityCameras,
       linesNames,
-      linesRoutes,
       channelsRoutes,
       speedReducersGroups,
       trafficLightsGroups,
       educationCentersGroups,
+      parkings,
     };
   }
 }
