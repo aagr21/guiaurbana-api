@@ -18,7 +18,7 @@ import { ParkingsService } from '@root/services';
     origin: '*',
   },
 })
-export class ParkingsGateway implements OnGatewayInit, OnGatewayConnection {
+export class ParkingsGateway implements OnGatewayInit {
   @WebSocketServer()
   server: Server;
   parkings: ParkingEntity[] = [];
@@ -47,13 +47,5 @@ export class ParkingsGateway implements OnGatewayInit, OnGatewayConnection {
     } catch (e) {
       console.error(e);
     }
-  }
-
-  async handleConnection(
-    @ConnectedSocket() client: Socket,
-    @MessageBody() ..._: any[]
-  ) {
-    this.parkings = await this.parkingsService.findAll();
-    client.emit('update', this.parkings);
   }
 }
