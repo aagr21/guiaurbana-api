@@ -1,14 +1,11 @@
 import {
-  ConnectedSocket,
-  MessageBody,
-  OnGatewayConnection,
   OnGatewayInit,
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
 import { ParkingEntity } from '@root/models/entities/parking.entity';
 import { Client } from 'pg';
-import { Server, Socket } from 'socket.io';
+import { Server } from 'socket.io';
 import { ConfigService } from '@nestjs/config';
 import { ParkingsService } from '@root/services';
 
