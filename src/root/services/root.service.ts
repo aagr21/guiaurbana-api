@@ -7,7 +7,7 @@ import {
   EducationCenterGroupEntity,
   LineNameEntity,
   ParkingEntity,
-  SpeedReducerGroupEntity,
+  SpeedReducerEntity,
   TrafficLightGroupEntity,
 } from '@root/models/entities';
 import { AllResponse } from '@root/models/responses/all-response';
@@ -24,8 +24,8 @@ export class RootService {
     private readonly linesNamesRepository: Repository<LineNameEntity>,
     @InjectRepository(ChannelRouteEntity)
     private readonly channelsRoutesRepository: Repository<ChannelRouteEntity>,
-    @InjectRepository(SpeedReducerGroupEntity)
-    private readonly speedReducersGroupsRepository: Repository<SpeedReducerGroupEntity>,
+    @InjectRepository(SpeedReducerEntity)
+    private readonly speedReducersRepository: Repository<SpeedReducerEntity>,
     @InjectRepository(TrafficLightGroupEntity)
     private readonly trafficLightsGroupsRepository: Repository<TrafficLightGroupEntity>,
     @InjectRepository(EducationCenterGroupEntity)
@@ -59,12 +59,9 @@ export class RootService {
       },
     });
 
-    const speedReducersGroups = await this.speedReducersGroupsRepository.find({
+    const speedReducers = await this.speedReducersRepository.find({
       order: {
         id: 'ASC',
-      },
-      relations: {
-        speedReducers: true,
       },
     });
 
@@ -89,7 +86,7 @@ export class RootService {
 
     const parkings = await this.parkingsRepository.find({
       order: {
-        id: 'ASC'
+        id: 'ASC',
       },
     });
 
@@ -98,7 +95,7 @@ export class RootService {
       cityCameras,
       linesNames,
       channelsRoutes,
-      speedReducersGroups,
+      speedReducers,
       trafficLightsGroups,
       educationCentersGroups,
       parkings,

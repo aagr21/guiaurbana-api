@@ -4,9 +4,8 @@ import {
   CityCameraEntity,
   EducationCenterGroupEntity,
   LineNameEntity,
-  LineRouteEntity,
   ParkingEntity,
-  SpeedReducerGroupEntity,
+  SpeedReducerEntity,
   TrafficLightGroupEntity,
 } from '@root/models/entities';
 
@@ -15,7 +14,7 @@ export interface AllResponse {
   cityCameras: CityCameraEntity[];
   linesNames: LineNameEntity[];
   channelsRoutes: ChannelRouteEntity[];
-  speedReducersGroups: SpeedReducerGroupEntity[];
+  speedReducers: SpeedReducerEntity[];
   trafficLightsGroups: TrafficLightGroupEntity[];
   educationCentersGroups: EducationCenterGroupEntity[];
   parkings: ParkingEntity[];
