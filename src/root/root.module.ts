@@ -17,6 +17,8 @@ import {
 } from '@root/models/entities';
 import { ParkingsService, RootService } from '@root/services';
 import { ParkingsGateway } from '@root/gateways/parkings.gateway';
+import { LinesRoutesController } from './controllers/lines-routes.controller';
+import { LinesRoutesService } from './services/lines-routes.service';
 
 @Module({
   imports: [
@@ -35,7 +37,7 @@ import { ParkingsGateway } from '@root/gateways/parkings.gateway';
       ParkingEntity,
     ]),
   ],
-  controllers: [RootController],
-  providers: [RootService, ParkingsService, ParkingsGateway],
+  controllers: [RootController, LinesRoutesController],
+  providers: [RootService, ParkingsService, ParkingsGateway, LinesRoutesService],
 })
 export class RootModule {}
