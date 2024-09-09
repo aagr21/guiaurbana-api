@@ -13,7 +13,9 @@ export class LinesNamesService {
   async find(stopLat?: number, stopLon?: number) {
     let linesNames: LineNameEntity[] = [];
     if (stopLat && stopLon) {
-      linesNames = await this.linesNamesRepository.query(`
+      linesNames = await this.linesNamesRepository
+        .query(
+          `
                 WITH ordered_routes AS (
                 SELECT lr.name
                         FROM (
@@ -29,7 +31,17 @@ export class LinesNamesService {
             FROM lines_names ln
             JOIN ordered_routes ordr ON ln.name = ordr.name
             ORDER BY array_position(array(SELECT name FROM ordered_routes), ln.name);
-                `);
+                `,
+        )
+        .then((res) => {
+          return res.map((item: Object) => {
+            return {
+              id: item['id'],
+              name: item['name'],
+              imageUrl: item['image_url'],
+            };
+          });
+        });
     } else {
       linesNames = await this.linesNamesRepository.find({
         order: {
