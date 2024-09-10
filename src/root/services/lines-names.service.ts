@@ -22,7 +22,7 @@ export class LinesNamesService {
                     SELECT lr.name, 
                     MIN(ST_DistanceSphere(lr.geom, ST_SetSRID(ST_MakePoint(${stopLon}, ${stopLat}), 4326))) AS distance
                     FROM lines_routes lr
-                    WHERE ST_DWithin(lr.geom, ST_SetSRID(ST_MakePoint(${stopLon}, ${stopLat}), 4326), 0.001)
+                    WHERE ST_DWithin(lr.geom, ST_SetSRID(ST_MakePoint(${stopLon}, ${stopLat}), 4326), 0.00045)
                     GROUP BY lr.name
                     ORDER BY distance ASC
                 ) AS lr
