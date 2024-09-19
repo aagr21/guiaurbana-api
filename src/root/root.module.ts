@@ -21,6 +21,7 @@ import { LinesRoutesController } from './controllers/lines-routes.controller';
 import { LinesRoutesService } from './services/lines-routes.service';
 import { LinesNamesController } from './controllers/lines-names.controller';
 import { LinesNamesService } from './services/lines-names.service';
+import { ParkingsController } from './controllers/parkings.controller';
 
 @Module({
   imports: [
@@ -39,7 +40,7 @@ import { LinesNamesService } from './services/lines-names.service';
       ParkingEntity,
     ]),
   ],
-  controllers: [RootController, LinesRoutesController, LinesNamesController],
+  controllers: [RootController, LinesRoutesController, LinesNamesController, ParkingsController],
   providers: [RootService, ParkingsService, ParkingsGateway, LinesRoutesService, LinesNamesService],
 })
 export class RootModule {}
