@@ -1,5 +1,5 @@
 import { Controller, Get, Query } from '@nestjs/common';
-import { LinesNamesService } from '../services/lines-names.service';
+import { LinesNamesService } from '@root/services';
 
 @Controller('lines-names')
 export class LinesNamesController {

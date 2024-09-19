@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { RootService } from '@root/services/root.service';
+import { RootService } from '@root/services';
 
 @Controller('root')
 export class RootController {
